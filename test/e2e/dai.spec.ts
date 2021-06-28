@@ -1,13 +1,12 @@
 import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { JsonRpcSigner } from '@ethersproject/providers';
-import { Contract } from '@ethersproject/contracts';
 import { BigNumber, utils } from 'ethers';
 import { ethers } from 'hardhat';
-import { constants, evm, wallet } from '../utils';
-import { given, then, when } from '../utils/bdd';
+import { constants, evm, wallet } from '@utils';
+import { given, then, when } from '@utils/bdd';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { expect } from 'chai';
-import { IERC20 } from '../../typechain/IERC20';
+import { IERC20 } from '@typechain/IERC20';
 
 // This will allow to cache blockchain state
 const forkBlockNumber = 12103332;

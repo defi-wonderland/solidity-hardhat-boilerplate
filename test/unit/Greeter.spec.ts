@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
-import { Greeter, Greeter__factory } from '../../typechain';
+import { Greeter, Greeter__factory } from '@typechain';
 
 describe('Greeter', function () {
   let greeter: Greeter;

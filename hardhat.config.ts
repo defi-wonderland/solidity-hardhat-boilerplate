@@ -7,6 +7,7 @@ import { removeConsoleLog } from 'hardhat-preprocessor';
 import 'hardhat-gas-reporter';
 import 'solidity-coverage';
 import { HardhatUserConfig } from 'hardhat/types';
+import 'tsconfig-paths/register';
 
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
