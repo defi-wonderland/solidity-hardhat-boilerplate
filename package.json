@@ -15,6 +15,16 @@
     "type": "git",
     "url": "git+https://github.com/defi-wonderland/hardhat-boilerplate-ts.git"
   },
+  "contributors": [
+    {
+      "name": "404skillz",
+      "url": "https://github.com/404skillz"
+    },
+    {
+      "name": "kiwi745",
+      "url": "https://github.com/kiwi745"
+    }
+  ],
   "scripts": {
     "compile": "hardhat compile",
     "compile:test": "cross-env TEST=true hardhat compile",
