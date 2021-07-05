@@ -17,31 +17,31 @@ const networks: NetworksUserConfig = process.env.TEST
         forking: {
           enabled: process.env.FORK ? true : false,
           url: getNodeUrl('ropsten'),
-        }
+        },
       },
       localhost: {
         url: getNodeUrl('localhost'),
-        accounts: accounts('localhost')
+        accounts: accounts('localhost'),
       },
       kovan: {
         url: getNodeUrl('kovan'),
         accounts: accounts('kovan'),
-        gasPrice: 'auto'
+        gasPrice: 'auto',
       },
       rinkeby: {
         url: getNodeUrl('rinkeby'),
         accounts: accounts('rinkeby'),
-        gasPrice: 'auto'
+        gasPrice: 'auto',
       },
       ropsten: {
         url: getNodeUrl('ropsten'),
         accounts: accounts('ropsten'),
-        gasPrice: 'auto'
+        gasPrice: 'auto',
       },
       mainnet: {
         url: getNodeUrl('mainnet'),
         accounts: accounts('mainnet'),
-        gasPrice: 'auto'
+        gasPrice: 'auto',
       },
     };
 

@@ -23,17 +23,16 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
       - name: Install node
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
 
       - name: Install dependencies
-        run: npm install
+        run: yarn --frozen-lockfile
 
       - name: Run linter
-        run: npm run lint:check
+        run: yarn run lint:check
 
   commits:
     runs-on: ubuntu-latest
