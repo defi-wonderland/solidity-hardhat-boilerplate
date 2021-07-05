@@ -18,7 +18,7 @@ describe('DAI', function () {
   let daiWhale: JsonRpcSigner;
   before(async () => {
     [stranger] = await ethers.getSigners();
-    dai = (await ethers.getContractAt('IERC20', '0x6b175474e89094c44da98b954eedeac495271d0f')) as IERC20;
+    dai = (await ethers.getContractAt('IERC20', '0x6b175474e89094c44da98b954eedeac495271d0f')) as unknown as IERC20;
   });
   beforeEach(async () => {
     await evm.reset({
