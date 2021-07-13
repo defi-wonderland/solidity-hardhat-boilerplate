@@ -9,7 +9,7 @@ coverage
 # Hardhat files
 cache
 artifacts
-typechain
+typechained
 
 # Config files
 .env

@@ -8,8 +8,7 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@typechain": ["typechain/index"],
-      "@typechain/*": ["typechain/*"],
+      "@typechained": ["typechained/index"],
       "@utils": ["test/utils/index"],
       "@utils/*": ["test/utils/*"],
       "@e2e/*": ["test/e2e/*"],
