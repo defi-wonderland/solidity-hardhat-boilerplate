@@ -3,14 +3,21 @@ import chaiAsPromised from 'chai-as-promised';
 import chai from 'chai';
 import { Contract, ContractFactory, ContractInterface, Signer, Wallet } from 'ethers';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
+import { Provider } from '@ethersproject/providers';
 import { getStatic } from 'ethers/lib/utils';
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
-import { given, then, when } from './bdd';
 import { wallet } from '.';
 
 chai.use(chaiAsPromised);
 
-const checkTxRevertedWithMessage = async ({ tx, message }: { tx: Promise<TransactionResponse>; message: RegExp | string }): Promise<void> => {
+type Impersonator = Signer | Provider | string;
+
+export const checkTxRevertedWithMessage = async ({
+  tx,
+  message,
+}: {
+  tx: Promise<TransactionResponse>;
+  message: RegExp | string;
+}): Promise<void> => {
   await expect(tx).to.be.reverted;
   if (message instanceof RegExp) {
     await expect(tx).eventually.rejected.have.property('message').match(message);
@@ -19,20 +26,20 @@ const checkTxRevertedWithMessage = async ({ tx, message }: { tx: Promise<Transac
   }
 };
 
-const checkTxRevertedWithZeroAddress = async (tx: Promise<TransactionResponse>): Promise<void> => {
+export const checkTxRevertedWithZeroAddress = async (tx: Promise<TransactionResponse>): Promise<void> => {
   await checkTxRevertedWithMessage({
     tx,
     message: /zero\saddress/,
   });
 };
 
-const deployShouldRevertWithZeroAddress = async ({ contract, args }: { contract: ContractFactory; args: any[] }): Promise<void> => {
+export const deployShouldRevertWithZeroAddress = async ({ contract, args }: { contract: ContractFactory; args: any[] }): Promise<void> => {
   const deployContractTx = await contract.getDeployTransaction(...args);
   const tx = contract.signer.sendTransaction(deployContractTx);
   await checkTxRevertedWithZeroAddress(tx);
 };
 
-const deployShouldRevertWithMessage = async ({
+export const deployShouldRevertWithMessage = async ({
   contract,
   args,
   message,
@@ -46,7 +53,7 @@ const deployShouldRevertWithMessage = async ({
   await checkTxRevertedWithMessage({ tx, message });
 };
 
-const txShouldRevertWithZeroAddress = async ({
+export const txShouldRevertWithZeroAddress = async ({
   contract,
   func,
   args,
@@ -56,11 +63,11 @@ const txShouldRevertWithZeroAddress = async ({
   args: any[];
   tx?: Promise<TransactionResponse>;
 }): Promise<void> => {
-  const tx = contract[func].apply(this, args);
+  const tx = contract[func](...args);
   await checkTxRevertedWithZeroAddress(tx);
 };
 
-const txShouldRevertWithMessage = async ({
+export const txShouldRevertWithMessage = async ({
   contract,
   func,
   args,
@@ -71,11 +78,11 @@ const txShouldRevertWithMessage = async ({
   args: any[];
   message: string;
 }): Promise<void> => {
-  const tx = contract[func].apply(this, args);
+  const tx = contract[func](...args);
   await checkTxRevertedWithMessage({ tx, message });
 };
 
-const checkTxEmittedEvents = async ({
+export const checkTxEmittedEvents = async ({
   contract,
   tx,
   events,
@@ -91,7 +98,7 @@ const checkTxEmittedEvents = async ({
   }
 };
 
-const deployShouldSetVariablesAndEmitEvents = async ({
+export const deployShouldSetVariablesAndEmitEvents = async ({
   contract,
   args,
   settersGettersVariablesAndEvents,
@@ -118,7 +125,7 @@ const deployShouldSetVariablesAndEmitEvents = async ({
   });
 };
 
-const txShouldHaveSetVariablesAndEmitEvents = async ({
+export const txShouldHaveSetVariablesAndEmitEvents = async ({
   contract,
   tx,
   settersGettersVariablesAndEvents,
@@ -142,11 +149,11 @@ const txShouldHaveSetVariablesAndEmitEvents = async ({
         },
       ],
     });
-    expect(await contract[settersGettersVariablesAndEvents[i].getterFunc].apply(this)).to.eq(settersGettersVariablesAndEvents[i].variable);
+    expect(await contract[settersGettersVariablesAndEvents[i].getterFunc]()).to.eq(settersGettersVariablesAndEvents[i].variable);
   }
 };
 
-const txShouldSetVariableAndEmitEvent = async ({
+export const txShouldSetVariableAndEmitEvent = async ({
   contract,
   setterFunc,
   getterFunc,
@@ -159,8 +166,8 @@ const txShouldSetVariableAndEmitEvent = async ({
   variable: any;
   eventEmitted: string;
 }): Promise<void> => {
-  expect(await contract[getterFunc].apply(this)).to.not.eq(variable);
-  const tx = contract[setterFunc].apply(this, [variable]);
+  expect(await contract[getterFunc]()).to.not.eq(variable);
+  const tx = contract[setterFunc](variable);
   await txShouldHaveSetVariablesAndEmitEvents({
     contract,
     tx,
@@ -174,13 +181,23 @@ const txShouldSetVariableAndEmitEvent = async ({
   });
 };
 
-export default {
-  deployShouldRevertWithMessage,
-  deployShouldRevertWithZeroAddress,
-  txShouldRevertWithZeroAddress,
-  txShouldRevertWithMessage,
-  deployShouldSetVariablesAndEmitEvents,
-  txShouldHaveSetVariablesAndEmitEvents,
-  txShouldSetVariableAndEmitEvent,
-  checkTxRevertedWithMessage,
+export const fnShouldOnlyBeCallableByGovernance = (
+  delayedContract: () => Contract,
+  fnName: string,
+  governance: Impersonator,
+  args: unknown[] | (() => unknown[])
+): void => {
+  it('should be callable by governance', () => {
+    return expect(callFunction(governance)).not.to.be.revertedWith('OnlyGovernance()');
+  });
+
+  it('should not be callable by any address', async () => {
+    return expect(callFunction(await wallet.generateRandom())).to.be.revertedWith('OnlyGovernance()');
+  });
+
+  function callFunction(impersonator: Impersonator) {
+    const argsArray: unknown[] = typeof args === 'function' ? args() : args;
+    const fn = delayedContract().connect(impersonator)[fnName] as (...args: unknown[]) => unknown;
+    return fn(...argsArray, { gasPrice: 0 });
+  }
 };
