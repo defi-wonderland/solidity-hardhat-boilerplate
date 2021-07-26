@@ -1,7 +1,7 @@
 import { BigNumber, Contract } from 'ethers';
 import { ethers } from 'hardhat';
 
-const deploy = async ({
+export const deploy = async ({
   name,
   symbol,
   decimals,
@@ -17,8 +17,4 @@ const deploy = async ({
   const erc20MockContract = await ethers.getContractFactory('contracts/mocks/ERC20Mock.sol:ERC20Mock');
   const deployedContract = await erc20MockContract.deploy(name, symbol, decimals || 18, initialAccount, initialAmount);
   return deployedContract;
-};
-
-export default {
-  deploy,
 };
