@@ -42,8 +42,8 @@
     "test:parallel": "yarn compile:test && cross-env TEST=true mocha --parallel",
     "test:all": "yarn test './test/e2e/**/*.spec.ts' && cross-env TEST=true mocha 'test/unit/**/*.spec.ts'",
     "test:all:parallel": "yarn test:parallel './test/e2e/**/*.spec.ts' 'test/unit/**/*.spec.ts'",
-    "test:e2e": "yarn test ./test/e2e/**/*.spec.ts",
-    "test:e2e:parallel": "yarn test:parallel ./test/e2e/**/*.spec.ts",
+    "test:e2e": "yarn test './test/e2e/**/*.spec.ts'",
+    "test:e2e:parallel": "yarn test:parallel './test/e2e/**/*.spec.ts'",
     "test:gas": "cross-env REPORT_GAS=1 npx hardhat test",
     "test:unit": "yarn test 'test/unit/**/*.spec.ts'",
     "test:unit:parallel": "yarn test:parallel 'test/unit/**/*.spec.ts'"
