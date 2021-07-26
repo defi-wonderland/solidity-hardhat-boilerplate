@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import '@typechain/hardhat';
+import '@typechain/hardhat/dist/type-extensions';
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-waffle';
 import '@nomiclabs/hardhat-etherscan';
@@ -62,6 +63,10 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
+  },
+  typechain: {
+    outDir: 'typechained',
+    target: 'ethers-v5',
   },
 };
 
