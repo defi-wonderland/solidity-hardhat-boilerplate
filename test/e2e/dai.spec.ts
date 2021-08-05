@@ -7,6 +7,7 @@ import { given, then, when } from '@utils/bdd';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { expect } from 'chai';
 import { IERC20 } from '@typechained';
+import { getNodeUrl } from 'utils/network';
 
 // This will allow to cache blockchain state
 const forkBlockNumber = 12103332;
@@ -22,7 +23,7 @@ describe('DAI', function () {
   });
   beforeEach(async () => {
     await evm.reset({
-      jsonRpcUrl: process.env.MAINNET_HTTPS_URL,
+      jsonRpcUrl: getNodeUrl('mainnet'),
       blockNumber: forkBlockNumber,
     });
     daiWhale = await wallet.impersonate(daiWhaleAddress);
