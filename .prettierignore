@@ -12,7 +12,7 @@ workspace.code-workspace
 # Hardhat
 artifacts
 cache
-typechain
+typechained
 
 # JS
 node_modules
