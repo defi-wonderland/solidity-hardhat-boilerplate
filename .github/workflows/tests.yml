@@ -37,6 +37,11 @@ jobs:
       - name: Run unit tests
         run: yarn test:unit
 
+      - name: Run eth gas reporter
+        run: npx codechecks
+        env:
+          CC_SECRET: ${{ secrets.CC }}
+
   e2e:
     runs-on: ubuntu-latest
     steps:

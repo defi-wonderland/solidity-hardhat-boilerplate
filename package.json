@@ -59,6 +59,7 @@
     "@openzeppelin/contracts": "4.1.0"
   },
   "devDependencies": {
+    "@codechecks/client": "0.1.11",
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
     "@nomiclabs/hardhat-ethers": "2.0.2",
