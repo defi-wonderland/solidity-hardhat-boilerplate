@@ -7,34 +7,48 @@ import '@nomiclabs/hardhat-etherscan';
 import { removeConsoleLog } from 'hardhat-preprocessor';
 import 'hardhat-gas-reporter';
 import 'solidity-coverage';
-import { HardhatUserConfig } from 'hardhat/types';
+import { HardhatUserConfig, NetworksUserConfig } from 'hardhat/types';
 import 'tsconfig-paths/register';
+import { getNodeUrl, accounts } from './utils/network';
+
+const networks: NetworksUserConfig = process.env.TEST
+  ? {}
+  : {
+      hardhat: {
+        forking: {
+          enabled: process.env.FORK ? true : false,
+          url: getNodeUrl('ropsten'),
+        },
+      },
+      localhost: {
+        url: getNodeUrl('localhost'),
+        accounts: accounts('localhost'),
+      },
+      kovan: {
+        url: getNodeUrl('kovan'),
+        accounts: accounts('kovan'),
+        gasPrice: 'auto',
+      },
+      rinkeby: {
+        url: getNodeUrl('rinkeby'),
+        accounts: accounts('rinkeby'),
+        gasPrice: 'auto',
+      },
+      ropsten: {
+        url: getNodeUrl('ropsten'),
+        accounts: accounts('ropsten'),
+        gasPrice: 'auto',
+      },
+      mainnet: {
+        url: getNodeUrl('mainnet'),
+        accounts: accounts('mainnet'),
+        gasPrice: 'auto',
+      },
+    };
 
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
-  networks: process.env.TEST
-    ? {}
-    : {
-        hardhat: {
-          forking: {
-            enabled: process.env.FORK ? true : false,
-            url: process.env.MAINNET_HTTPS_URL as string,
-          },
-        },
-        localMainnet: {
-          url: process.env.LOCAL_MAINNET_HTTPS_URL,
-          accounts: [process.env.LOCAL_MAINNET_PRIVATE_KEY as string],
-        },
-        mainnet: {
-          url: process.env.MAINNET_HTTPS_URL,
-          accounts: [process.env.MAINNET_PRIVATE_KEY as string],
-          gasPrice: 'auto',
-        },
-        ropsten: {
-          url: process.env.ROPSTEN_HTTPS_URL,
-          accounts: [process.env.ROPSTEN_PRIVATE_KEY as string],
-        },
-      },
+  networks,
   solidity: {
     compilers: [
       {
@@ -54,9 +68,9 @@ const config: HardhatUserConfig = {
     ],
   },
   gasReporter: {
-    enabled: process.env.REPORT_GAS ? true : false,
-    currency: process.env.COINMARKETCAP_DEFAULT_CURRENCY,
+    currency: process.env.COINMARKETCAP_DEFAULT_CURRENCY || 'USD',
     coinmarketcap: process.env.COINMARKETCAP_API_KEY,
+    enabled: process.env.REPORT_GAS ? true : false,
   },
   preprocess: {
     eachLine: removeConsoleLog((hre) => hre.network.name !== 'hardhat'),
