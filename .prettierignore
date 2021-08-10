@@ -11,6 +11,8 @@ workspace.code-workspace
 codechecks.yml
 
 # Hardhat
+coverage
+coverage.json
 artifacts
 cache
 typechained
