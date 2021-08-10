@@ -23,6 +23,10 @@
     {
       "name": "kiwi745",
       "url": "https://github.com/kiwi745"
+    },
+    {
+      "name": "wei3erHase",
+      "url": "https://github.com/wei3erHase"
     }
   ],
   "scripts": {
@@ -49,11 +53,11 @@
     "test:unit:parallel": "yarn test:parallel 'test/unit/**/*.spec.ts'"
   },
   "resolutions": {
-    "@ethereumjs/block": "3.2.1",
-    "@ethereumjs/blockchain": "5.2.1",
-    "@ethereumjs/common": "2.2.0",
-    "@ethereumjs/tx": "3.1.4",
-    "@ethereumjs/vm": "5.3.1"
+    "@ethereumjs/block": "3.3.0",
+    "@ethereumjs/blockchain": "5.3.0",
+    "@ethereumjs/common": "2.3.1",
+    "@ethereumjs/tx": "3.2.1",
+    "@ethereumjs/vm": "5.4.1"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.1.0"
@@ -100,7 +104,7 @@
     "sort-package-json": "1.50.0",
     "standard-version": "9.3.0",
     "ts-node": "10.0.0",
-    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths": "3.9.0",
     "typechain": "5.1.1",
     "typescript": "4.3.2"
   }
