@@ -62,6 +62,8 @@
     "@codechecks/client": "0.1.11",
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
+    "@defi-wonderland/smock": "2.0.1",
+    "@nomiclabs/ethereumjs-vm": "4.2.2",
     "@nomiclabs/hardhat-ethers": "2.0.2",
     "@nomiclabs/hardhat-etherscan": "2.1.2",
     "@nomiclabs/hardhat-waffle": "2.0.1",

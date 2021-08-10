@@ -1,3 +1,4 @@
+import { smock } from '@defi-wonderland/smock';
 import { expect } from 'chai';
 import { ethers } from 'hardhat';
 import { Greeter, Greeter__factory } from '@typechained';
@@ -18,5 +19,13 @@ describe('Greeter', function () {
     expect(await greeter.greet()).to.equal('Hola, mundo!');
 
     await new Promise((res) => setTimeout(res, 5000));
+  });
+
+  it("Should return other greeter's greeting", async () => {
+    const fakeGreet = "im so fake y'all";
+    const fakeGreeter = await smock.fake<Greeter>(greeterFactory);
+    fakeGreeter.greet.returns(fakeGreet);
+    const simonSaid = await greeter.simonSays(fakeGreeter.address);
+    expect(simonSaid).to.equal(fakeGreet);
   });
 });

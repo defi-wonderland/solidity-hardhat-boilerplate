@@ -34,4 +34,9 @@ contract Greeter {
     _changedGreet = true;
     emit GreetingSet(_greeting);
   }
+
+  function simonSays(address _otherGreeter) public view returns (string memory) {
+    string memory _otherGreeterGreeting = Greeter(_otherGreeter).greet();
+    return _otherGreeterGreeting;
+  }
 }
