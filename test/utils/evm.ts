@@ -38,3 +38,32 @@ export const reset = async (forking?: { [key: string]: any }) => {
     params,
   });
 };
+
+export const takeSnapshot = async (): Promise<string> => {
+  return (await network.provider.request({
+    method: 'evm_snapshot',
+    params: [],
+  })) as string;
+};
+
+export const revertSnapshot = async (id: string) => {
+  await network.provider.request({
+    method: 'evm_revert',
+    params: [id],
+  });
+};
+
+export class SnapshotManager {
+  snapshots: { [id: string]: string } = {};
+
+  async take(): Promise<string> {
+    const id = await takeSnapshot();
+    this.snapshots[id] = id;
+    return id;
+  }
+
+  async revert(id: string): Promise<void> {
+    await revertSnapshot(this.snapshots[id]);
+    this.snapshots[id] = await takeSnapshot();
+  }
+}
