@@ -39,7 +39,7 @@ export const reset = async (forking?: { [key: string]: any }) => {
   });
 };
 
-export class SnapshotManager {
+class SnapshotManager {
   snapshots: { [id: string]: string } = {};
 
   async take(): Promise<string> {
@@ -67,3 +67,5 @@ export class SnapshotManager {
     });
   }
 }
+
+export const snapshot = new SnapshotManager();
