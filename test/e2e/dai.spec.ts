@@ -4,10 +4,10 @@ import { BigNumber, utils } from 'ethers';
 import { ethers } from 'hardhat';
 import { constants, evm, wallet } from '@utils';
 import { given, then, when } from '@utils/bdd';
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { expect } from 'chai';
 import { IERC20 } from '@typechained';
 import { getNodeUrl } from 'utils/network';
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/dist/src/signers';
 
 // This will allow to cache blockchain state
 const forkBlockNumber = 12103332;
