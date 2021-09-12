@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  unit:
+  run:
     runs-on: ubuntu-latest
     steps:
       - name: Check out github repository
@@ -35,8 +35,12 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Run gas tests
-        run: yarn test:gas && npx codechecks
+        run: yarn test:gas
         env:
           ETH_NODE_URI_MAINNET: https://eth-mainnet.alchemyapi.io/v2/${{ secrets.ALCHEMYKEY }}
+
+      - name: Run eth gas reporter
+        run: npx codechecks
+        env:
           COINMARKETCAP_API_KEY: ${{ secrets.COINMARKETCAP_API_KEY }}
           CC_SECRET: ${{ secrets.CC }}
