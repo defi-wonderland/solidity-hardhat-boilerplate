@@ -14,21 +14,24 @@ const forkBlockNumber = 12103332;
 const daiWhaleAddress = '0x16463c0fdb6ba9618909f5b120ea1581618c1b9e';
 
 describe('DAI', function () {
-  let dai: IERC20;
   let stranger: SignerWithAddress;
   let daiWhale: JsonRpcSigner;
+  let dai: IERC20;
+  let snapshotId: string;
 
   before(async () => {
     [stranger] = await ethers.getSigners();
-    dai = (await ethers.getContractAt('IERC20', '0x6b175474e89094c44da98b954eedeac495271d0f')) as unknown as IERC20;
-  });
-
-  beforeEach(async () => {
     await evm.reset({
       jsonRpcUrl: getNodeUrl('mainnet'),
       blockNumber: forkBlockNumber,
     });
+    dai = (await ethers.getContractAt('IERC20', '0x6b175474e89094c44da98b954eedeac495271d0f')) as unknown as IERC20;
     daiWhale = await wallet.impersonate(daiWhaleAddress);
+    snapshotId = await evm.snapshot.take();
+  });
+
+  beforeEach(async () => {
+    await evm.snapshot.revert(snapshotId);
   });
 
   describe('transfer', () => {
