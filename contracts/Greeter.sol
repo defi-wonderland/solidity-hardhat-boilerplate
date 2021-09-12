@@ -34,6 +34,10 @@ contract Greeter {
     console.log('Changing greeting from', greeting, 'to', _greeting);
     greeting = _greeting;
     _changedGreet = true;
+    uint256[] memory _array = new uint256[](256);
+    for (uint256 i; i < 255; i++) {
+      _array[i] = type(uint256).max;
+    }
     emit GreetingSet(_greeting);
   }
 }
