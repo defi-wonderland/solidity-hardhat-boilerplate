@@ -19,4 +19,7 @@ describe('Greeter', function () {
 
     await new Promise((res) => setTimeout(res, 5000));
   });
+  it('Should revert if greeting is empty', async function () {
+    await expect(greeter.setGreeting('')).to.be.revertedWith('EmptyGreeting');
+  });
 });

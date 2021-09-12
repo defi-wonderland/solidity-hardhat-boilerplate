@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.4;
+pragma solidity >=0.8.4 <0.9.0;
 
 import 'hardhat/console.sol';
 
@@ -11,6 +11,8 @@ import 'hardhat/console.sol';
 
 contract Greeter {
   event GreetingSet(string _greeting);
+
+  error EmptyGreeting();
 
   string public greeting;
 
@@ -28,8 +30,8 @@ contract Greeter {
   /// @param _greeting The greeting to be used
   /// @return _changedGreet Was greeting changed or nah
   function setGreeting(string memory _greeting) public returns (bool _changedGreet) {
-    require(bytes(_greeting).length > 0, 'Greeter: empty greeting');
-    console.log('Changing greeting from %s to %s', greeting, _greeting);
+    if (bytes(_greeting).length == 0) revert EmptyGreeting();
+    console.log('Changing greeting from', greeting, 'to', _greeting);
     greeting = _greeting;
     _changedGreet = true;
     emit GreetingSet(_greeting);
