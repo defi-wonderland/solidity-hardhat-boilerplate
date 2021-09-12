@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity 0.8.6;
+pragma solidity >=0.8.4 <0.9.0;
 
 import 'hardhat/console.sol';
 
@@ -31,7 +31,7 @@ contract Greeter {
   /// @return _changedGreet Was greeting changed or nah
   function setGreeting(string memory _greeting) public returns (bool _changedGreet) {
     if (bytes(_greeting).length == 0) revert EmptyGreeting();
-    console.log('Changing greeting from %s to %s', greeting, _greeting);
+    console.log('Changing greeting from', greeting, 'to', _greeting);
     greeting = _greeting;
     _changedGreet = true;
     emit GreetingSet(_greeting);
