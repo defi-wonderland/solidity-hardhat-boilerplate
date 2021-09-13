@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  unit:
+  run:
     runs-on: ubuntu-latest
     steps:
       - name: Check out github repository
@@ -39,4 +39,5 @@ jobs:
       - name: Run eth gas reporter
         run: npx codechecks
         env:
+          COINMARKETCAP_API_KEY: ${{ secrets.COINMARKETCAP_API_KEY }}
           CC_SECRET: ${{ secrets.CC }}
