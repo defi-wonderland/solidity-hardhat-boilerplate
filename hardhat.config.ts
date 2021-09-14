@@ -71,6 +71,8 @@ const config: HardhatUserConfig = {
     currency: process.env.COINMARKETCAP_DEFAULT_CURRENCY || 'USD',
     coinmarketcap: process.env.COINMARKETCAP_API_KEY,
     enabled: process.env.REPORT_GAS ? true : false,
+    showMethodSig: true,
+    onlyCalledMethods: false,
   },
   preprocess: {
     eachLine: removeConsoleLog((hre) => hre.network.name !== 'hardhat'),
