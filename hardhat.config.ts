@@ -1,16 +1,16 @@
 import 'dotenv/config';
+import '@nomiclabs/hardhat-waffle';
+import '@nomiclabs/hardhat-ethers';
+import '@nomiclabs/hardhat-etherscan';
 import '@typechain/hardhat';
 import '@typechain/hardhat/dist/type-extensions';
-import '@nomiclabs/hardhat-ethers';
-import '@nomiclabs/hardhat-waffle';
-import '@nomiclabs/hardhat-etherscan';
 import { removeConsoleLog } from 'hardhat-preprocessor';
 import 'hardhat-gas-reporter';
 import 'hardhat-deploy';
 import 'solidity-coverage';
-import { HardhatUserConfig, NetworksUserConfig } from 'hardhat/types';
-import 'tsconfig-paths/register';
+import { HardhatUserConfig, MultiSolcUserConfig, NetworksUserConfig } from 'hardhat/types';
 import { getNodeUrl, accounts } from './utils/network';
+import 'tsconfig-paths/register';
 
 const networks: NetworksUserConfig = process.env.TEST
   ? {}
@@ -28,22 +28,18 @@ const networks: NetworksUserConfig = process.env.TEST
       kovan: {
         url: getNodeUrl('kovan'),
         accounts: accounts('kovan'),
-        gasPrice: 'auto',
       },
       rinkeby: {
         url: getNodeUrl('rinkeby'),
         accounts: accounts('rinkeby'),
-        gasPrice: 'auto',
       },
       ropsten: {
         url: getNodeUrl('ropsten'),
         accounts: accounts('ropsten'),
-        gasPrice: 'auto',
       },
       mainnet: {
         url: getNodeUrl('mainnet'),
         accounts: accounts('mainnet'),
-        gasPrice: 'auto',
       },
     };
 
@@ -54,6 +50,9 @@ const config: HardhatUserConfig = {
       default: 0,
     },
   },
+  mocha: {
+    timeout: process.env.MOCHA_TIMEOUT || 300000,
+  },
   networks,
   solidity: {
     compilers: [
@@ -63,11 +62,6 @@ const config: HardhatUserConfig = {
           optimizer: {
             enabled: true,
             runs: 200,
-          },
-          outputSelection: {
-            '*': {
-              '*': ['storageLayout'],
-            },
           },
         },
       },
@@ -91,5 +85,18 @@ const config: HardhatUserConfig = {
     target: 'ethers-v5',
   },
 };
+
+if (process.env.TEST) {
+  (config.solidity as MultiSolcUserConfig).compilers = (config.solidity as MultiSolcUserConfig).compilers.map((compiler) => {
+    return {
+      ...compiler,
+      outputSelection: {
+        '*': {
+          '*': ['storageLayout'],
+        },
+      },
+    };
+  });
+}
 
 export default config;
