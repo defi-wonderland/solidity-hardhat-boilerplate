@@ -6,6 +6,7 @@ import '@nomiclabs/hardhat-waffle';
 import '@nomiclabs/hardhat-etherscan';
 import { removeConsoleLog } from 'hardhat-preprocessor';
 import 'hardhat-gas-reporter';
+import 'hardhat-deploy';
 import 'solidity-coverage';
 import { HardhatUserConfig, NetworksUserConfig } from 'hardhat/types';
 import 'tsconfig-paths/register';
@@ -17,7 +18,7 @@ const networks: NetworksUserConfig = process.env.TEST
       hardhat: {
         forking: {
           enabled: process.env.FORK ? true : false,
-          url: getNodeUrl('ropsten'),
+          url: getNodeUrl('mainnet'),
         },
       },
       localhost: {
@@ -48,6 +49,11 @@ const networks: NetworksUserConfig = process.env.TEST
 
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
+  },
   networks,
   solidity: {
     compilers: [
