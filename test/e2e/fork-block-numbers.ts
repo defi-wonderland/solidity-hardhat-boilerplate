@@ -1,4 +1,4 @@
-const forkBlockNumber: { [test: string]: number } = {
+const forkBlockNumber: { [name: string]: number } = {
   dai: 12103332,
 };
 
