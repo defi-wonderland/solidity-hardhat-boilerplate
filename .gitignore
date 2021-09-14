@@ -10,6 +10,11 @@ coverage
 cache
 artifacts
 typechained
+deployments/hardhat
+deployments/localhost
 
 # Config files
 .env
+
+# Not ignore gitkeep
+!/**/.gitkeep

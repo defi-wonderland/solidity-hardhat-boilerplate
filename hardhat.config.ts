@@ -6,6 +6,7 @@ import '@typechain/hardhat';
 import '@typechain/hardhat/dist/type-extensions';
 import { removeConsoleLog } from 'hardhat-preprocessor';
 import 'hardhat-gas-reporter';
+import 'hardhat-deploy';
 import 'solidity-coverage';
 import { HardhatUserConfig, MultiSolcUserConfig, NetworksUserConfig } from 'hardhat/types';
 import { getNodeUrl, accounts } from './utils/network';
@@ -44,6 +45,11 @@ const networks: NetworksUserConfig = process.env.TEST
 
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
+  },
   mocha: {
     timeout: process.env.MOCHA_TIMEOUT || 300000,
   },
