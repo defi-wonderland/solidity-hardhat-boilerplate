@@ -49,6 +49,14 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Cache hardhat network fork
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-hardhat-network-fork
+        with:
+          path: cache/hardhat-network-fork
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('test/e2e/fork-block-numbers.ts') }}
+
       - name: Install node
         uses: actions/setup-node@v1
         with:
