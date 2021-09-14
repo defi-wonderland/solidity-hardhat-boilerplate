@@ -79,10 +79,9 @@ const config: HardhatUserConfig = {
 };
 
 if (process.env.TEST) {
-  const solidity = config.solidity as MultiSolcUserConfig;
-  solidity.compilers.forEach((_, i) => {
-    solidity.compilers[i].settings! = {
-      ...solidity.compilers[i].settings!,
+  (config.solidity as MultiSolcUserConfig).compilers = (config.solidity as MultiSolcUserConfig).compilers.map((compiler) => {
+    return {
+      ...compiler,
       outputSelection: {
         '*': {
           '*': ['storageLayout'],
@@ -90,7 +89,6 @@ if (process.env.TEST) {
       },
     };
   });
-  config.solidity = solidity;
 }
 
 export default config;
