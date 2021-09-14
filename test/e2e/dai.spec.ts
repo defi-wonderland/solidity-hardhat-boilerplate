@@ -2,7 +2,7 @@ import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { JsonRpcSigner } from '@ethersproject/providers';
 import { BigNumber, utils } from 'ethers';
 import { ethers } from 'hardhat';
-import { constants, evm, wallet } from '@utils';
+import { evm, wallet } from '@utils';
 import { given, then, when } from '@utils/bdd';
 import { expect } from 'chai';
 import { IERC20 } from '@typechained';
@@ -42,7 +42,7 @@ describe('DAI', function () {
         // There is no need to connect the dai contract to stranger
         // since its the default signer.
         // That is just for template examples.
-        transferTx = dai.connect(stranger).transfer(constants.NOT_ZERO_ADDRESS, utils.parseEther('1'));
+        transferTx = dai.connect(stranger).transfer(wallet.generateRandomAddress(), utils.parseEther('1'));
       });
 
       then('tx is reverted with reason', async () => {
