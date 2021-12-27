@@ -12,7 +12,7 @@ import forkBlockNumber from './fork-block-numbers';
 
 const daiWhaleAddress = '0x16463c0fdb6ba9618909f5b120ea1581618c1b9e';
 
-describe('DAI', function () {
+describe('DAI @skip-on-coverage', function () {
   let stranger: SignerWithAddress;
   let daiWhale: JsonRpcSigner;
   let dai: IERC20;
