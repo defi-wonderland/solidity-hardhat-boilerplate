@@ -19,5 +19,5 @@ export const deploy = async (contract: ContractFactory, args: any[]): Promise<{ 
 };
 
 export const setBalance = async (address: string, amount: BigNumber): Promise<void> => {
-  await network.provider.send('hardhat_setBalance', [address, amount.toHexString()]);
+  await network.provider.send('hardhat_setBalance', [address, amount.toHexString().replace('0x0', '0x')]);
 };
