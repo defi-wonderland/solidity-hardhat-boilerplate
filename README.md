@@ -89,7 +89,7 @@ Runs standard changelog, changes package.json version and modifies CHANGELOG.md 
 ### **Test**
 
 ```bash
-yarn test
+yarn test:all
 ```
 
 Runs all solidity tests.
