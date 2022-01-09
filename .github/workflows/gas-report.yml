@@ -34,7 +34,7 @@ jobs:
       - name: Run gas tests
         run: yarn test:gas
         env:
-          ETH_NODE_URI_MAINNET: https://eth-mainnet.alchemyapi.io/v2/${{ secrets.ALCHEMYKEY }}
+          NODE_URI_MAINNET: https://eth-mainnet.alchemyapi.io/v2/${{ secrets.ALCHEMYKEY }}
 
       - name: Run eth gas reporter
         run: npx codechecks

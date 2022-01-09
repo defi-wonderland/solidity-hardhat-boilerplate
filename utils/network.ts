@@ -2,23 +2,23 @@ import 'dotenv/config';
 
 export function getNodeUrl(networkName: string): string {
   if (networkName) {
-    const uri = process.env[`ETH_NODE_URI_${networkName.toUpperCase()}`];
+    const uri = process.env[`NODE_URI_${networkName.toUpperCase()}`];
     if (uri && uri !== '') {
       return uri;
     }
   }
 
   if (networkName === 'localhost') {
-    // do not use ETH_NODE_URI
+    // do not use NODE_URI
     return 'http://localhost:8545';
   }
 
-  let uri = process.env.ETH_NODE_URI;
+  let uri = process.env.NODE_URI;
   if (uri) {
     uri = uri.replace('{{networkName}}', networkName);
   }
   if (!uri || uri === '') {
-    // throw new Error(`environment variable "ETH_NODE_URI" not configured `);
+    // throw new Error(`environment variable "NODE_URI" not configured `);
     return '';
   }
   if (uri.indexOf('{{') >= 0) {
