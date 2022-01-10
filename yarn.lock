@@ -2967,10 +2967,15 @@ colors@1.0.3:
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
   integrity sha1-BDP0TYCWgP3rYO0mDxsMJi6CpAs=
 
+colors@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
+  integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
+
 colors@^1.1.2:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.1.tgz#57e798423c5fa9182f7531e4c587bfce9483175d"
-  integrity sha512-urbBmMVnD1vk0mUwCpnWv06P3f16EF+RMTtIXTkylJk5mAdfrMepu9B3hhSnL8DGkc1Ra6pENJHrXTKvcAZ0wA==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.2.tgz#cd4fe227412ca2c75bb6f5683ec2e5e68de4f317"
+  integrity sha512-5QhJWPFZqkKIieXJPpCprdOytvH7v0AGWpu9K2jZ4LWkGg3dVBNoYPgGGRpEsc0jb8Boy0ElYrdjH9uXfhRSqw==
 
 combined-stream@^1.0.6, combined-stream@^1.0.8, combined-stream@~1.0.6:
   version "1.0.8"
@@ -4119,14 +4124,14 @@ eth-ens-namehash@2.0.8, eth-ens-namehash@^2.0.8:
     js-sha3 "^0.5.7"
 
 eth-gas-reporter@^0.2.23:
-  version "0.2.23"
-  resolved "https://registry.yarnpkg.com/eth-gas-reporter/-/eth-gas-reporter-0.2.23.tgz#7a2a412b41285298cdad810cf54adac11d406208"
-  integrity sha512-T8KsVakDEupvQxW3MfFfHDfJ7y8zl2+XhyEQk4hZ3qQsAh/FE27BfFHM9UhqNQvrJLz8zVWnPZWNcARwLT/lsA==
+  version "0.2.24"
+  resolved "https://registry.yarnpkg.com/eth-gas-reporter/-/eth-gas-reporter-0.2.24.tgz#768721fec7de02b566e4ebfd123466d275d7035c"
+  integrity sha512-RbXLC2bnuPHzIMU/rnLXXlb6oiHEEKu7rq2UrAX/0mfo0Lzrr/kb9QTjWjfz8eNvc+uu6J8AuBwI++b+MLNI2w==
   dependencies:
     "@ethersproject/abi" "^5.0.0-beta.146"
     "@solidity-parser/parser" "^0.14.0"
     cli-table3 "^0.5.0"
-    colors "^1.1.2"
+    colors "1.4.0"
     ethereumjs-util "6.2.0"
     ethers "^4.0.40"
     fs-readdir-recursive "^1.1.0"
