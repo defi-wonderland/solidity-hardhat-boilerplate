@@ -12,36 +12,37 @@ import { HardhatUserConfig, MultiSolcUserConfig, NetworksUserConfig } from 'hard
 import * as env from './utils/env';
 import 'tsconfig-paths/register';
 
-const networks: NetworksUserConfig = (env.isHardhatCompile() || env.isTesting())
-  ? {}
-  : {
-      hardhat: {
-        forking: {
-          enabled: process.env.FORK ? true : false,
-          url: env.getNodeUrl('mainnet'),
+const networks: NetworksUserConfig =
+  env.isHardhatCompile() || env.isTesting()
+    ? {}
+    : {
+        hardhat: {
+          forking: {
+            enabled: process.env.FORK ? true : false,
+            url: env.getNodeUrl('mainnet'),
+          },
         },
-      },
-      localhost: {
-        url: env.getNodeUrl('localhost'),
-        accounts: env.getAccounts({ network: 'localhost' }),
-      },
-      kovan: {
-        url: env.getNodeUrl('kovan'),
-        accounts: env.getAccounts({ network: 'kovan' }),
-      },
-      rinkeby: {
-        url: env.getNodeUrl('rinkeby'),
-        accounts: env.getAccounts({ network: 'rinkeby' }),
-      },
-      ropsten: {
-        url: env.getNodeUrl('ropsten'),
-        accounts: env.getAccounts({ network: 'ropsten' }),
-      },
-      mainnet: {
-        url: env.getNodeUrl('mainnet'),
-        accounts: env.getAccounts({ network: 'mainnet' }),
-      },
-    };
+        localhost: {
+          url: env.getNodeUrl('localhost'),
+          accounts: env.getAccounts({ network: 'localhost' }),
+        },
+        kovan: {
+          url: env.getNodeUrl('kovan'),
+          accounts: env.getAccounts({ network: 'kovan' }),
+        },
+        rinkeby: {
+          url: env.getNodeUrl('rinkeby'),
+          accounts: env.getAccounts({ network: 'rinkeby' }),
+        },
+        ropsten: {
+          url: env.getNodeUrl('ropsten'),
+          accounts: env.getAccounts({ network: 'ropsten' }),
+        },
+        mainnet: {
+          url: env.getNodeUrl('mainnet'),
+          accounts: env.getAccounts({ network: 'mainnet' }),
+        },
+      };
 
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',

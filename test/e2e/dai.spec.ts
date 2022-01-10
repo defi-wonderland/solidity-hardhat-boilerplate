@@ -24,7 +24,7 @@ describe('DAI @skip-on-coverage', function () {
       jsonRpcUrl: getNodeUrl('mainnet'),
       blockNumber: forkBlockNumber.dai,
     });
-    dai = await ethers.getContractAt('IERC20', '0x6b175474e89094c44da98b954eedeac495271d0f') as IERC20;
+    dai = (await ethers.getContractAt('IERC20', '0x6b175474e89094c44da98b954eedeac495271d0f')) as IERC20;
     daiWhale = await wallet.impersonate(daiWhaleAddress);
     snapshotId = await evm.snapshot.take();
   });

@@ -37,7 +37,7 @@ export function getMnemonic(network: string): string {
 
 export function getPrivateKeys(network: string): string[] {
   const privateKeys = [];
-  for (let i = 1; i <= MAX_ACCOUNTS; i ++) {
+  for (let i = 1; i <= MAX_ACCOUNTS; i++) {
     const privateKey = process.env[`${network.toUpperCase()}_${i}_PRIVATE_KEY`];
     if (!!privateKey) privateKeys.push(privateKey);
   }
@@ -51,7 +51,7 @@ export function getPrivateKeys(network: string): string[] {
 export function getAccounts({
   typeOfAccount,
   network,
-} : {
+}: {
   typeOfAccount?: 'mnemonic' | 'privateKey';
   network: string;
 }): { mnemonic: string } | string[] {
@@ -59,12 +59,12 @@ export function getAccounts({
     return getPrivateKeys(network);
   }
   return {
-    mnemonic: getMnemonic(network)
+    mnemonic: getMnemonic(network),
   };
 }
 
 export function isTesting(): boolean {
- return !!process.env.TEST;
+  return !!process.env.TEST;
 }
 
 export function isHardhatCompile(): boolean {
