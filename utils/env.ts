@@ -2,28 +2,15 @@ import 'dotenv/config';
 
 const MAX_ACCOUNTS = 10;
 
-export function getNodeUrl(networkName: string): string {
-  if (networkName) {
-    const uri = process.env[`ETH_NODE_URI_${networkName.toUpperCase()}`];
+export function getNodeUrl(network: string): string {
+  if (network) {
+    const uri = process.env[`NODE_URI_${network.toUpperCase()}`];
     if (uri && uri !== '') {
       return uri;
     }
   }
-
-  if (networkName === 'localhost') {
-    // do not use ETH_NODE_URI
-    return 'http://localhost:8545';
-  }
-
-  let uri = process.env.ETH_NODE_URI;
-  if (uri) {
-    uri = uri.replace('{{networkName}}', networkName);
-  }
-  if (!uri || uri === '') {
-    // throw new Error(`environment variable "ETH_NODE_URI" not configured `);
-    return '';
-  }
-  return uri;
+  console.warn(`No node uri for network ${network}`);
+  return '';
 }
 
 export function getMnemonic(network: string): string {
