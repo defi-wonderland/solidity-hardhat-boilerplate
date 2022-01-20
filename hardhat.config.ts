@@ -24,23 +24,23 @@ const networks: NetworksUserConfig =
         },
         localhost: {
           url: env.getNodeUrl('localhost'),
-          accounts: env.getAccounts({ network: 'localhost' }),
+          accounts: env.getAccounts('localhost'),
         },
         kovan: {
           url: env.getNodeUrl('kovan'),
-          accounts: env.getAccounts({ network: 'kovan' }),
+          accounts: env.getAccounts('kovan'),
         },
         rinkeby: {
           url: env.getNodeUrl('rinkeby'),
-          accounts: env.getAccounts({ network: 'rinkeby' }),
+          accounts: env.getAccounts('rinkeby'),
         },
         ropsten: {
           url: env.getNodeUrl('ropsten'),
-          accounts: env.getAccounts({ network: 'ropsten' }),
+          accounts: env.getAccounts('ropsten'),
         },
         mainnet: {
           url: env.getNodeUrl('mainnet'),
-          accounts: env.getAccounts({ network: 'mainnet' }),
+          accounts: env.getAccounts('mainnet'),
         },
       };
 

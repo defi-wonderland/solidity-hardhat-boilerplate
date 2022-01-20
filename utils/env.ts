@@ -14,7 +14,7 @@ export function getNodeUrl(network: string): string {
 }
 
 export function getMnemonic(network: string): string {
-  const mnemonic = process.env[`MNEMONIC_${network.toUpperCase()}`] as string;
+  const mnemonic = process.env[`${network.toUpperCase()}_MNEMONIC`] as string;
   if (!mnemonic) {
     console.warn(`No mnemonic for network ${network}`);
     return 'test test test test test test test test test test test junk';
@@ -35,14 +35,19 @@ export function getPrivateKeys(network: string): string[] {
   return privateKeys;
 }
 
-export function getAccounts({
-  typeOfAccount,
-  network,
-}: {
-  typeOfAccount?: 'mnemonic' | 'privateKey';
-  network: string;
-}): { mnemonic: string } | string[] {
-  if (!typeOfAccount || typeOfAccount == 'privateKey') {
+type ACCOUNTS_TYPE = 'MNEMONIC' | 'PRIVATE_KEYS';
+
+export function getAccountsType(network: string): ACCOUNTS_TYPE {
+  const accountsType = process.env[`${network.toUpperCase()}_ACCOUNTS_TYPE`];
+  if (!accountsType) return 'PRIVATE_KEYS';
+  if (!(accountsType == 'MNEMONIC' || accountsType == 'PRIVATE_KEYS')) {
+    console.warn(`Accounts type incorrect for network ${network} using fallback`);
+  }
+  return 'MNEMONIC';
+}
+
+export function getAccounts(network: string): { mnemonic: string } | string[] {
+  if (getAccountsType(network) == 'PRIVATE_KEYS') {
     return getPrivateKeys(network);
   }
   return {
