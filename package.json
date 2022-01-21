@@ -53,6 +53,11 @@
     "test:unit": "yarn test 'test/unit/**/*.spec.ts'",
     "test:unit:parallel": "yarn test:parallel 'test/unit/**/*.spec.ts'"
   },
+  "resolutions": {
+    "cli-table3@^0.5.0/colors": "1.4.0",
+    "cli-table@^0.3.1/colors": "1.0.3",
+    "eth-gas-reporter/colors": "1.4.0"
+  },
   "dependencies": {
     "@openzeppelin/contracts": "4.4.1"
   },
@@ -102,10 +107,5 @@
     "tsconfig-paths": "3.12.0",
     "typechain": "6.1.0",
     "typescript": "4.5.4"
-  },
-  "resolutions": {
-    "cli-table@^0.3.1/colors": "1.0.3",
-    "cli-table3@^0.5.0/colors": "1.4.0",
-    "eth-gas-reporter/colors": "1.4.0"
   }
 }
