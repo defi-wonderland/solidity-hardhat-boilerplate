@@ -28,9 +28,8 @@ export function getPrivateKeys(network: string): string[] {
     const privateKey = process.env[`${network.toUpperCase()}_${i}_PRIVATE_KEY`];
     if (!!privateKey) privateKeys.push(privateKey);
   }
-  if (privateKeys.length == 0) {
+  if (privateKeys.length === 0) {
     console.warn(`No private keys for network ${network}`);
-    privateKeys.push('0x0000000000000000000000000000000000000000000000000000000000000bad');
   }
   return privateKeys;
 }
@@ -39,9 +38,10 @@ type ACCOUNTS_TYPE = 'MNEMONIC' | 'PRIVATE_KEYS';
 
 export function getAccountsType(network: string): ACCOUNTS_TYPE {
   const accountsType = process.env[`${network.toUpperCase()}_ACCOUNTS_TYPE`];
-  if (!accountsType) return 'PRIVATE_KEYS';
-  if (!(accountsType == 'MNEMONIC' || accountsType == 'PRIVATE_KEYS')) {
+  if (!accountsType || accountsType === 'PRIVATE_KEYS') return 'PRIVATE_KEYS';
+  if (accountsType != 'MNEMONIC' && accountsType != 'PRIVATE_KEYS') {
     console.warn(`Accounts type incorrect for network ${network} using fallback`);
+    return 'PRIVATE_KEYS';
   }
   return 'MNEMONIC';
 }
