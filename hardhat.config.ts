@@ -21,21 +21,9 @@ const networks: NetworksUserConfig = process.env.TEST
           url: getNodeUrl('mainnet'),
         },
       },
-      localhost: {
-        url: getNodeUrl('localhost'),
-        accounts: accounts('localhost'),
-      },
       kovan: {
         url: getNodeUrl('kovan'),
         accounts: accounts('kovan'),
-      },
-      rinkeby: {
-        url: getNodeUrl('rinkeby'),
-        accounts: accounts('rinkeby'),
-      },
-      ropsten: {
-        url: getNodeUrl('ropsten'),
-        accounts: accounts('ropsten'),
       },
       mainnet: {
         url: getNodeUrl('mainnet'),
