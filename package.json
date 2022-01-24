@@ -56,7 +56,6 @@
   },
   "lint-staged": {
     "*.{js,css,md,ts}": "prettier --write",
-    "*": "cross-env prettier --write './**'",
     "*.sol": "cross-env solhint --fix 'contracts/**/*.sol' 'interfaces/**/*.sol'",
     "package.json": "sort-package-json"
   },
