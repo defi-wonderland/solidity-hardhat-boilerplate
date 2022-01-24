@@ -40,10 +40,11 @@
     "postinstall": "husky install && yarn compile:test",
     "lint:check": "cross-env solhint 'contracts/**/*.sol' 'interfaces/**/*.sol' && cross-env prettier --check './**'",
     "lint:fix": "sort-package-json && cross-env prettier --write './**' && cross-env solhint --fix 'contracts/**/*.sol' 'interfaces/**/*.sol'",
+    "prepare": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "release": "standard-version",
-    "test": "yarn compile:test && cross-env TEST=true mocha",
+    "test": "yarn test:all",
     "test:all": "yarn test './test/e2e/**/*.spec.ts' && cross-env TEST=true mocha 'test/unit/**/*.spec.ts'",
     "test:all:parallel": "yarn test:parallel './test/e2e/**/*.spec.ts' 'test/unit/**/*.spec.ts'",
     "test:e2e": "yarn test './test/e2e/**/*.spec.ts'",
@@ -52,6 +53,17 @@
     "test:parallel": "yarn compile:test && cross-env TEST=true mocha --parallel",
     "test:unit": "yarn test 'test/unit/**/*.spec.ts'",
     "test:unit:parallel": "yarn test:parallel 'test/unit/**/*.spec.ts'"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write",
+    "*": "cross-env prettier --write './**'",
+    "*.sol": "cross-env solhint --fix 'contracts/**/*.sol' 'interfaces/**/*.sol'",
+    "package.json": "sort-package-json"
+  },
+  "resolutions": {
+    "cli-table3@^0.5.0/colors": "1.4.0",
+    "cli-table@^0.3.1/colors": "1.0.3",
+    "eth-gas-reporter/colors": "1.4.0"
   },
   "dependencies": {
     "@openzeppelin/contracts": "4.4.1"
@@ -78,6 +90,7 @@
     "chai-as-promised": "7.1.1",
     "cross-env": "7.0.3",
     "dotenv": "10.0.0",
+    "eth-sdk": "0.2.10",
     "ethereum-waffle": "3.4.0",
     "ethers": "5.5.3",
     "hardhat": "2.8.2",
@@ -85,6 +98,7 @@
     "hardhat-gas-reporter": "1.0.6",
     "hardhat-preprocessor": "0.1.4",
     "husky": "7.0.4",
+    "lint-staged": ">=10",
     "lodash": "4.17.21",
     "mocha": "9.1.3",
     "moment": "2.29.1",
@@ -102,10 +116,5 @@
     "tsconfig-paths": "3.12.0",
     "typechain": "6.1.0",
     "typescript": "4.5.4"
-  },
-  "resolutions": {
-    "cli-table@^0.3.1/colors": "1.0.3",
-    "cli-table3@^0.5.0/colors": "1.4.0",
-    "eth-gas-reporter/colors": "1.4.0"
   }
 }

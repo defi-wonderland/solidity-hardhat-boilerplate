@@ -84,6 +84,9 @@ const config: HardhatUserConfig = {
     outDir: 'typechained',
     target: 'ethers-v5',
   },
+  paths: {
+    sources: './solidity',
+  },
 };
 
 if (process.env.TEST) {
