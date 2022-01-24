@@ -2,9 +2,8 @@ import chai, { expect } from 'chai';
 import { MockContract, MockContractFactory, smock } from '@defi-wonderland/smock';
 import { Greeter, Greeter__factory } from '@typechained';
 import { evm } from '@utils';
-import { solidity } from 'ethereum-waffle';
 
-chai.use(solidity);
+chai.use(smock.matchers);
 
 describe('Greeter', () => {
   let greeter: MockContract<Greeter>;
