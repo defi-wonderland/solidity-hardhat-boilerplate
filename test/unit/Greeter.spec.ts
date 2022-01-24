@@ -13,6 +13,7 @@ describe('Greeter', () => {
   before(async () => {
     greeterFactory = await smock.mock<Greeter__factory>('Greeter');
     greeter = await greeterFactory.deploy('Hello, world!');
+
     snapshotId = await evm.snapshot.take();
   });
 
