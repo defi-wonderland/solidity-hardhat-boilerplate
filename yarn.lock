@@ -4369,7 +4369,7 @@ eth-query@^2.0.2, eth-query@^2.1.0, eth-query@^2.1.2:
     json-rpc-random-id "^1.0.0"
     xtend "^4.0.1"
 
-eth-sdk@^0.2.10:
+eth-sdk@0.2.10:
   version "0.2.10"
   resolved "https://registry.yarnpkg.com/eth-sdk/-/eth-sdk-0.2.10.tgz#f0254fb5a90eb9740a111e2b870f48d65ff5481a"
   integrity sha512-eTaWB2s6JD75ctEWBBGOJ8ok32uKvSD9ivE1Zqc9A0URolDtSzojl/+B3ou2qyFnuWKKgnuw6xj2rEbnsfM5ag==

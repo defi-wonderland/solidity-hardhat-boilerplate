@@ -11,6 +11,7 @@ describe('Greeter', function () {
   before(async () => {
     greeterFactory = (await ethers.getContractFactory('Greeter')) as Greeter__factory;
     greeter = await greeterFactory.deploy('Hello, world!');
+
     snapshotId = await evm.snapshot.take();
   });
   beforeEach(async () => {
