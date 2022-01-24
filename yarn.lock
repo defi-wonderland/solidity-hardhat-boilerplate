@@ -212,7 +212,7 @@
   dependencies:
     "@cspotcode/source-map-consumer" "0.8.0"
 
-"@defi-wonderland/smock@^2.0.7":
+"@defi-wonderland/smock@2.0.7":
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/@defi-wonderland/smock/-/smock-2.0.7.tgz#59d5fc93e175ad120c5dcdd8294e07525606c855"
   integrity sha512-RVpODLKZ/Cr0C1bCbhJ2aXbAr2Ll/K2WO7hDL96tqhMzCsA7ToWdDIgiNpV5Vtqqvpftu5ddO7v3TAurQNSU0w==
