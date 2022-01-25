@@ -10,7 +10,7 @@ import '../interfaces/IGreeter.sol';
 /// @dev This is just a try out
 /// @custom:experimental This is an experimental contract.
 
-contract Greeter is IGreeter{
+contract Greeter is IGreeter {
   string public override greeting;
 
   constructor(string memory _greeting) {

@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity >=0.8.4 <0.9.0;
 
-interface IGreeter{
+interface IGreeter {
   event GreetingSet(string _greeting);
 
   error EmptyGreeting();
@@ -11,5 +11,4 @@ interface IGreeter{
   function greet() external view returns (string memory);
 
   function setGreeting(string memory _greeting) external returns (bool);
-
 }
