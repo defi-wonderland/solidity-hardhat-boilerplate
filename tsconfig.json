@@ -12,7 +12,8 @@
       "@utils": ["test/utils/index"],
       "@utils/*": ["test/utils/*"],
       "@e2e/*": ["test/e2e/*"],
-      "@unit/*": ["test/unit/*"]
+      "@unit/*": ["test/unit/*"],
+      "@eth-sdk-types": ["node_modules/.dethcrypto/eth-sdk-client/esm/types"]
     }
   },
   "include": ["./scripts", "./deploy", "./test"],

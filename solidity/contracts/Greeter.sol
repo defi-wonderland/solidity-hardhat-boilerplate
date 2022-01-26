@@ -2,6 +2,7 @@
 pragma solidity >=0.8.4 <0.9.0;
 
 import 'hardhat/console.sol';
+import '../interfaces/IGreeter.sol';
 
 /// @title A contract for boilerplating
 /// @author Hardhat (and DeFi Wonderland)
@@ -9,19 +10,15 @@ import 'hardhat/console.sol';
 /// @dev This is just a try out
 /// @custom:experimental This is an experimental contract.
 
-contract Greeter {
-  event GreetingSet(string _greeting);
-
-  error EmptyGreeting();
-
-  string public greeting;
+contract Greeter is IGreeter {
+  string public override greeting;
 
   constructor(string memory _greeting) {
     console.log('Deploying a Greeter with greeting:', _greeting);
     greeting = _greeting;
   }
 
-  function greet() public view returns (string memory) {
+  function greet() public view override returns (string memory) {
     return greeting;
   }
 
@@ -29,7 +26,7 @@ contract Greeter {
   /// @dev Some explanation only defined for devs
   /// @param _greeting The greeting to be used
   /// @return _changedGreet Was greeting changed or nah
-  function setGreeting(string memory _greeting) public returns (bool _changedGreet) {
+  function setGreeting(string memory _greeting) public override returns (bool _changedGreet) {
     if (bytes(_greeting).length == 0) revert EmptyGreeting();
     console.log('Changing greeting from', greeting, 'to', _greeting);
     greeting = _greeting;
