@@ -55,6 +55,19 @@ export function getAccounts(network: string): { mnemonic: string } | string[] {
   };
 }
 
+export function getEtherscanAPIKeys(networks: string[]): { [network: string]: string } {
+  const apiKeys: { [network: string]: string } = {};
+  networks.forEach((network) => {
+    const networkApiKey = process.env[`${network.toUpperCase()}_ETHERSCAN_API_KEY`];
+    if (!networkApiKey) {
+      console.warn(`No etherscan api key for ${network}`);
+    } else {
+      apiKeys[network] = networkApiKey;
+    }
+  });
+  return apiKeys;
+}
+
 export function isTesting(): boolean {
   return !!process.env.TEST;
 }
