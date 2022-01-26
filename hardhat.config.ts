@@ -9,39 +9,40 @@ import 'hardhat-gas-reporter';
 import 'hardhat-deploy';
 import 'solidity-coverage';
 import { HardhatUserConfig, MultiSolcUserConfig, NetworksUserConfig } from 'hardhat/types';
-import { getNodeUrl, accounts } from './utils/network';
+import * as env from './utils/env';
 import 'tsconfig-paths/register';
 
-const networks: NetworksUserConfig = process.env.TEST
-  ? {}
-  : {
-      hardhat: {
-        forking: {
-          enabled: process.env.FORK ? true : false,
-          url: getNodeUrl('mainnet'),
+const networks: NetworksUserConfig =
+  env.isHardhatCompile() || env.isTesting()
+    ? {}
+    : {
+        hardhat: {
+          forking: {
+            enabled: process.env.FORK ? true : false,
+            url: env.getNodeUrl('mainnet'),
+          },
         },
-      },
-      localhost: {
-        url: getNodeUrl('localhost'),
-        accounts: accounts('localhost'),
-      },
-      kovan: {
-        url: getNodeUrl('kovan'),
-        accounts: accounts('kovan'),
-      },
-      rinkeby: {
-        url: getNodeUrl('rinkeby'),
-        accounts: accounts('rinkeby'),
-      },
-      ropsten: {
-        url: getNodeUrl('ropsten'),
-        accounts: accounts('ropsten'),
-      },
-      mainnet: {
-        url: getNodeUrl('mainnet'),
-        accounts: accounts('mainnet'),
-      },
-    };
+        localhost: {
+          url: env.getNodeUrl('localhost'),
+          accounts: env.getAccounts('localhost'),
+        },
+        kovan: {
+          url: env.getNodeUrl('kovan'),
+          accounts: env.getAccounts('kovan'),
+        },
+        rinkeby: {
+          url: env.getNodeUrl('rinkeby'),
+          accounts: env.getAccounts('rinkeby'),
+        },
+        ropsten: {
+          url: env.getNodeUrl('ropsten'),
+          accounts: env.getAccounts('ropsten'),
+        },
+        mainnet: {
+          url: env.getNodeUrl('mainnet'),
+          accounts: env.getAccounts('mainnet'),
+        },
+      };
 
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',

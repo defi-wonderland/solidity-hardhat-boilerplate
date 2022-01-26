@@ -7,7 +7,7 @@ import { ethers } from 'hardhat';
 import { evm, wallet } from '@utils';
 import { given, then, when } from '@utils/bdd';
 import { expect } from 'chai';
-import { getNodeUrl } from 'utils/network';
+import { getNodeUrl } from 'utils/env';
 import forkBlockNumber from './fork-block-numbers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 
