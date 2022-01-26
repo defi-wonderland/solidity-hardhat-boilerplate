@@ -1,3 +1,5 @@
+import { getMainnetSdk } from '@dethcrypto/eth-sdk-client';
+import { Dai } from '@eth-sdk-types';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { JsonRpcSigner } from '@ethersproject/providers';
 import { BigNumber, utils } from 'ethers';
@@ -5,17 +7,16 @@ import { ethers } from 'hardhat';
 import { evm, wallet } from '@utils';
 import { given, then, when } from '@utils/bdd';
 import { expect } from 'chai';
-import { IERC20 } from '@typechained';
-import { getNodeUrl } from 'utils/network';
+import { getNodeUrl } from 'utils/env';
 import forkBlockNumber from './fork-block-numbers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 
 const daiWhaleAddress = '0x16463c0fdb6ba9618909f5b120ea1581618c1b9e';
 
-describe('DAI @skip-on-coverage', function () {
+describe('DAI @skip-on-coverage', () => {
   let stranger: SignerWithAddress;
   let daiWhale: JsonRpcSigner;
-  let dai: IERC20;
+  let dai: Dai;
   let snapshotId: string;
 
   before(async () => {
@@ -24,7 +25,10 @@ describe('DAI @skip-on-coverage', function () {
       jsonRpcUrl: getNodeUrl('mainnet'),
       blockNumber: forkBlockNumber.dai,
     });
-    dai = (await ethers.getContractAt('IERC20', '0x6b175474e89094c44da98b954eedeac495271d0f')) as unknown as IERC20;
+
+    const sdk = getMainnetSdk(stranger);
+    dai = sdk.dai;
+
     daiWhale = await wallet.impersonate(daiWhaleAddress);
     snapshotId = await evm.snapshot.take();
   });
@@ -50,7 +54,6 @@ describe('DAI @skip-on-coverage', function () {
     });
 
     when('user has funds', () => {
-      let transferTx: TransactionResponse;
       let initialSenderBalance: BigNumber;
       let initialReceiverBalance: BigNumber;
       const amountToTransfer = utils.parseEther('1');
@@ -59,7 +62,7 @@ describe('DAI @skip-on-coverage', function () {
         // We use our dai whale's impersonated signer
         initialSenderBalance = await dai.balanceOf(daiWhale._address);
         initialReceiverBalance = await dai.balanceOf(stranger.address);
-        transferTx = await dai.connect(daiWhale).transfer(stranger.address, amountToTransfer);
+        await dai.connect(daiWhale).transfer(stranger.address, amountToTransfer);
       });
 
       then('funds are taken from sender', async () => {

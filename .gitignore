@@ -6,6 +6,9 @@ node_modules
 coverage.json
 coverage
 
+# ETH-SDK
+eth-sdk/abis
+
 # Hardhat files
 cache
 artifacts

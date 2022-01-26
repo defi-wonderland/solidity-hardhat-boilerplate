@@ -9,27 +9,28 @@ import 'hardhat-gas-reporter';
 import 'hardhat-deploy';
 import 'solidity-coverage';
 import { HardhatUserConfig, MultiSolcUserConfig, NetworksUserConfig } from 'hardhat/types';
-import { getNodeUrl, accounts } from './utils/network';
+import * as env from './utils/env';
 import 'tsconfig-paths/register';
 
-const networks: NetworksUserConfig = process.env.TEST
-  ? {}
-  : {
-      hardhat: {
-        forking: {
-          enabled: process.env.FORK ? true : false,
-          url: getNodeUrl('mainnet'),
+const networks: NetworksUserConfig =
+  env.isHardhatCompile() || env.isTesting()
+    ? {}
+    : {
+        hardhat: {
+          forking: {
+            enabled: process.env.FORK ? true : false,
+            url: env.getNodeUrl('mainnet'),
+          },
         },
-      },
-      kovan: {
-        url: getNodeUrl('kovan'),
-        accounts: accounts('kovan'),
-      },
-      mainnet: {
-        url: getNodeUrl('mainnet'),
-        accounts: accounts('mainnet'),
-      },
-    };
+        kovan: {
+          url: env.getNodeUrl('kovan'),
+          accounts: env.getAccounts('kovan'),
+        },
+        mainnet: {
+          url: env.getNodeUrl('mainnet'),
+          accounts: env.getAccounts('mainnet'),
+        },
+      };
 
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
@@ -71,6 +72,9 @@ const config: HardhatUserConfig = {
   typechain: {
     outDir: 'typechained',
     target: 'ethers-v5',
+  },
+  paths: {
+    sources: './solidity',
   },
 };
 
