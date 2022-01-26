@@ -55,7 +55,7 @@
     "test:unit:parallel": "yarn test:parallel 'test/unit/**/*.spec.ts'"
   },
   "lint-staged": {
-    "*.{js,css,md,ts}": "prettier --write",
+    "*.{js,css,md,ts,sol}": "prettier --write",
     "*.sol": "cross-env solhint --fix 'contracts/**/*.sol' 'interfaces/**/*.sol'",
     "package.json": "sort-package-json"
   },
