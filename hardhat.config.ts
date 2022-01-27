@@ -79,7 +79,7 @@ const config: HardhatUserConfig = {
     eachLine: removeConsoleLog((hre) => hre.network.name !== 'hardhat'),
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: env.getEtherscanAPIKeys(['mainnet']),
   },
   typechain: {
     outDir: 'typechained',
