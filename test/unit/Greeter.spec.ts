@@ -22,16 +22,16 @@ describe('Greeter', () => {
   });
 
   it('should return current greeting', async () => {
-    await greeter.setVariable('greeting', 'Hola, mundo!');
+    await greeter.setVariable('greeting', 'Hello, world!');
 
-    expect(await greeter.greet()).to.equal('Hola, mundo!');
+    expect(await greeter.greet()).to.equal('Hello, world!');
   });
 
   it('should return the new greeting once is changed', async () => {
     expect(await greeter.greet()).to.equal('Hello, world!');
 
-    await greeter.setGreeting('Hola, mundo!');
-    expect(await greeter.greet()).to.equal('Hola, mundo!');
+    await greeter.setGreeting('Hello, world!');
+    expect(await greeter.greet()).to.equal('Hello, world!');
   });
 
   it('should revert if greeting is empty', async () => {
