@@ -198,6 +198,6 @@ export const fnShouldOnlyBeCallableByGovernance = (
   function callFunction(impersonator: Impersonator) {
     const argsArray: unknown[] = typeof args === 'function' ? args() : args;
     const fn = delayedContract().connect(impersonator)[fnName] as (...args: unknown[]) => unknown;
-    return fn(...argsArray, { gasPrice: 0 });
+    return fn(...argsArray);
   }
 };
