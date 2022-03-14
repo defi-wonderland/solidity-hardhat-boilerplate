@@ -22,21 +22,9 @@ const networks: NetworksUserConfig =
             url: env.getNodeUrl('mainnet'),
           },
         },
-        localhost: {
-          url: env.getNodeUrl('localhost'),
-          accounts: env.getAccounts('localhost'),
-        },
         kovan: {
           url: env.getNodeUrl('kovan'),
           accounts: env.getAccounts('kovan'),
-        },
-        rinkeby: {
-          url: env.getNodeUrl('rinkeby'),
-          accounts: env.getAccounts('rinkeby'),
-        },
-        ropsten: {
-          url: env.getNodeUrl('ropsten'),
-          accounts: env.getAccounts('ropsten'),
         },
         mainnet: {
           url: env.getNodeUrl('mainnet'),
