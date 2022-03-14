@@ -30,7 +30,7 @@
     }
   ],
   "scripts": {
-    "compile": "hardhat compile",
+    "compile": "eth-sdk && hardhat compile",
     "compile:test": "cross-env TEST=true hardhat compile",
     "coverage": "hardhat coverage",
     "deploy": "npx hardhat deploy",
