@@ -52,7 +52,7 @@
     "lint:check": "cross-env solhint 'contracts/**/*.sol' 'interfaces/**/*.sol' && cross-env prettier --check './**'",
     "lint:fix": "sort-package-json && cross-env prettier --write './**' && cross-env solhint --fix 'contracts/**/*.sol' 'interfaces/**/*.sol'",
     "prepare": "husky install",
-    "prepublishOnly": "pinst --disable",
+    "prepublishOnly": "hardhat clean && hardhat compile && pinst --disable",
     "postpublish": "pinst --enable",
     "release": "standard-version",
     "test": "yarn compile:test && cross-env TEST=true mocha",

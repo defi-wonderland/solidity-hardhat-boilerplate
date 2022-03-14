@@ -75,3 +75,7 @@ export function isTesting(): boolean {
 export function isHardhatCompile(): boolean {
   return process.argv[process.argv.length - 1] == 'compile';
 }
+
+export function isHardhatClean(): boolean {
+  return process.argv[process.argv.length - 1] == 'clean';
+}
