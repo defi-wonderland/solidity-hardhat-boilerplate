@@ -29,6 +29,17 @@
       "url": "https://github.com/wei3erHase"
     }
   ],
+  "files": [
+    "solidity/contracts",
+    "solidity/interfaces",
+    "artifacts/solidity/**/*.json",
+    "!artifacts/solidity/**/**/*.dbg.json",
+    "typechained",
+    "deployments",
+    "!deployments/localhost",
+    "!.env",
+    "!**/.DS_Store"
+  ],
   "scripts": {
     "compile": "hardhat compile",
     "compile:test": "cross-env TEST=true hardhat compile",
