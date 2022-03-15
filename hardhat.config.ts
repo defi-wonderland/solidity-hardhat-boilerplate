@@ -13,7 +13,7 @@ import * as env from './utils/env';
 import 'tsconfig-paths/register';
 
 const networks: NetworksUserConfig =
-  env.isHardhatCompile() || env.isTesting()
+  env.isHardhatCompile() || env.isHardhatClean() || env.isTesting()
     ? {}
     : {
         hardhat: {
