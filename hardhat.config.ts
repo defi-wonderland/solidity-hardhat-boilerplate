@@ -19,16 +19,16 @@ const networks: NetworksUserConfig =
         hardhat: {
           forking: {
             enabled: process.env.FORK ? true : false,
-            url: env.getNodeUrl('mainnet'),
+            url: env.getNodeUrl('ethereum'),
           },
         },
         kovan: {
           url: env.getNodeUrl('kovan'),
           accounts: env.getAccounts('kovan'),
         },
-        mainnet: {
-          url: env.getNodeUrl('mainnet'),
-          accounts: env.getAccounts('mainnet'),
+        ethereum: {
+          url: env.getNodeUrl('ethereum'),
+          accounts: env.getAccounts('ethereum'),
         },
       };
 
@@ -67,7 +67,7 @@ const config: HardhatUserConfig = {
     eachLine: removeConsoleLog((hre) => hre.network.name !== 'hardhat'),
   },
   etherscan: {
-    apiKey: env.getEtherscanAPIKeys(['mainnet']),
+    apiKey: env.getEtherscanAPIKeys(['ethereum']),
   },
   typechain: {
     outDir: 'typechained',

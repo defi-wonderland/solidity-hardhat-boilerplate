@@ -22,7 +22,7 @@ describe('DAI @skip-on-coverage', () => {
   before(async () => {
     [stranger] = await ethers.getSigners();
     await evm.reset({
-      jsonRpcUrl: getNodeUrl('mainnet'),
+      jsonRpcUrl: getNodeUrl('ethereum'),
       blockNumber: forkBlockNumber.dai,
     });
 
