@@ -8,6 +8,7 @@
 .env
 workspace.code-workspace
 .DS_STORE
+LICENSE
 codechecks.yml
 
 # Hardhat
