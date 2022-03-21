@@ -8,6 +8,9 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
+      "@artifacts": ["artifacts/*"],
+      "@deploy": ["deploy/*"],
+      "@deployments": ["deployments/*"],
       "@typechained": ["typechained/index"],
       "@utils": ["test/utils/index"],
       "@utils/*": ["test/utils/*"],
