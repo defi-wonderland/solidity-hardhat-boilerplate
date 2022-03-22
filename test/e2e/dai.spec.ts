@@ -10,7 +10,6 @@ import { expect } from 'chai';
 import { getNodeUrl } from 'utils/env';
 import forkBlockNumber from './fork-block-numbers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
-import { Dai__factory } from '@eth-sdk-types';
 
 const daiWhaleAddress = '0x16463c0fdb6ba9618909f5b120ea1581618c1b9e';
 
@@ -30,7 +29,6 @@ describe('DAI @skip-on-coverage', () => {
     const sdk = getMainnetSdk(stranger);
     dai = sdk.dai;
 
-    console.log(Dai__factory.abi);
     daiWhale = await wallet.impersonate(daiWhaleAddress);
     snapshotId = await evm.snapshot.take();
   });
