@@ -10,6 +10,9 @@ workspace.code-workspace
 .DS_STORE
 codechecks.yml
 
+# CI
+.github/workflows
+
 # Hardhat
 coverage
 coverage.json
