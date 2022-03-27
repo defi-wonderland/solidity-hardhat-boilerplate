@@ -1,13 +1,14 @@
+import { BigNumber, BigNumberish } from 'ethers';
 import { network } from 'hardhat';
 
 export const advanceTimeAndBlock = async (time: number): Promise<void> => {
   await advanceTime(time);
-  await advanceBlock();
+  await advanceBlocks(1);
 };
 
 export const advanceToTimeAndBlock = async (time: number): Promise<void> => {
   await advanceToTime(time);
-  await advanceBlock();
+  await advanceBlocks(1);
 };
 
 export const advanceTime = async (time: number): Promise<void> => {
@@ -24,10 +25,11 @@ export const advanceToTime = async (time: number): Promise<void> => {
   });
 };
 
-export const advanceBlock = async () => {
+export const advanceBlocks = async (blocks: BigNumberish) => {
+  blocks = !BigNumber.isBigNumber(blocks) ? BigNumber.from(`${blocks}`) : blocks;
   await network.provider.request({
-    method: 'evm_mine',
-    params: [],
+    method: 'hardhat_mine',
+    params: [blocks.toHexString().replace('0x0', '0x')],
   });
 };
 
