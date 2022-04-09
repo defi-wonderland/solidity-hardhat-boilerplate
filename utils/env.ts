@@ -62,7 +62,7 @@ export function getEtherscanAPIKeys(networks: string[]): { [network: string]: st
     if (!networkApiKey) {
       console.warn(`No etherscan api key for ${network}`);
     } else {
-      apiKeys[network] = networkApiKey;
+      apiKeys[network == 'ethereum' ? 'mainnet' : network] = networkApiKey;
     }
   });
   return apiKeys;

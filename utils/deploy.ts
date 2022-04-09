@@ -14,7 +14,7 @@ export const getChainId = async (hre: HardhatRuntimeEnvironment): Promise<number
     return testChainId;
   }
   if (!!process.env.FORK) return getRealChainIdOfFork(hre);
-  return await (hre as any).getChainId();
+  return parseInt(await hre.getChainId());
 };
 
 export const getRealChainIdOfFork = (hre: HardhatRuntimeEnvironment): number => {
