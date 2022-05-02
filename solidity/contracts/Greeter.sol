@@ -18,7 +18,7 @@ contract Greeter is IGreeter {
     greeting = _greeting;
   }
 
-  function greet() public view override returns (string memory) {
+  function greet() external view override returns (string memory) {
     return greeting;
   }
 
@@ -26,7 +26,7 @@ contract Greeter is IGreeter {
   /// @dev Some explanation only defined for devs
   /// @param _greeting The greeting to be used
   /// @return _changedGreet Was greeting changed or nah
-  function setGreeting(string memory _greeting) public override returns (bool _changedGreet) {
+  function setGreeting(string memory _greeting) external override returns (bool _changedGreet) {
     if (bytes(_greeting).length == 0) revert EmptyGreeting();
     console.log('Changing greeting from', greeting, 'to', _greeting);
     greeting = _greeting;
