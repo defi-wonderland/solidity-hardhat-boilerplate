@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity >=0.8.4 <0.9.0;
+pragma solidity 0.8.7;
 
 import 'hardhat/console.sol';
 import '../interfaces/IGreeter.sol';
