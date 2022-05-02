@@ -1,0 +1,4 @@
+{
+  "detectors_to_exclude": "incorrect-versions-of-solidity,conformance-to-solidity-naming-conventions",
+  "filter_paths": "node_modules|openzeppelin"
+}
