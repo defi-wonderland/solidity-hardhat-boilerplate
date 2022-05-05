@@ -27,6 +27,14 @@ This boilerplate includes:
 
 ---
 
+## GitHub Workflows
+
+You need to setup the following GitHub secrets to run the GitHub workflows successfully:
+
+- `ALCHEMYKEY`: the mainnet Ethereum API key is for running e2e tests on the forked mainnet. Get the key from your app on the [Alchemy Dashboard](https://dashboard.alchemyapi.io/).
+- `COINMARKETCAP_API_KEY`: the CoinMarketCap API key is for fetching the crypto asset prices to use during the gas report. Get the key from the [CoinMarketCap Developers Dashboard](https://pro.coinmarketcap.com/account).
+- `CC`: Codechekcs is for code review automation. We use Codechecks for gas reporting in this project. Get the Codechecks secret by following the "Getting Started" guide on the [codechecks documentation](https://github.com/codechecks/docs/blob/master/getting-started.md).
+
 ## Commands
 
 ### **Coverage**
