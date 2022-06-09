@@ -29,8 +29,8 @@ describe('Greeter', () => {
   it('should return the new greeting once is changed', async () => {
     expect(await greeter.greet()).to.equal('Hello, world!');
 
-    await greeter.setGreeting('Hello, world!');
-    expect(await greeter.greet()).to.equal('Hello, world!');
+    await greeter.setGreeting('Hola, mundo!');
+    expect(await greeter.greet()).to.equal('Hola, mundo!');
   });
 
   it('should revert if greeting is empty', async () => {
