@@ -12,6 +12,22 @@ This is achieved using several hardhat plugins, and external known packages.
 
 ---
 
+## Setup
+
+```bash
+# Install dependencies
+yarn install
+# Copy Env example file
+cp .env.example .env
+```
+
+After installing dependencies and copying the example environment, you will have to update your `.env` file with
+at least you alchemy API KEY (`NODE_URI_ETHEREUM`).
+<br/>
+You can generate your API KEY in the [Alchemy site](https://www.alchemy.com).
+
+---
+
 ## Tools
 
 This boilerplate includes:
@@ -62,7 +78,7 @@ Runs tests that should be run in mainnet's fork.
 ### **Lint**
 
 ```bash
-yarn lint
+yarn lint:check
 ```
 
 Runs solhint.

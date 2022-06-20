@@ -5,6 +5,7 @@ import { getChainId, shouldVerifyContract } from '../utils/deploy';
 export const INITIAL_GREET: { [chainId: string]: string } = {
   '1': 'Halo!',
   '137': 'Halo to polygon network!',
+  '31337': 'Hello',
 };
 
 const deployFunction: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
@@ -13,7 +14,7 @@ const deployFunction: DeployFunction = async function (hre: HardhatRuntimeEnviro
   const chainId = await getChainId(hre);
 
   const deploy = await hre.deployments.deploy('Greeter', {
-    contract: 'contracts/Greeter.sol:Greeter',
+    contract: 'solidity/contracts/Greeter.sol:Greeter',
     from: deployer,
     args: [INITIAL_GREET[chainId]],
     log: true,
