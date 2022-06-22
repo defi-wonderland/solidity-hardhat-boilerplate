@@ -10069,7 +10069,14 @@ solhint-plugin-prettier@0.0.5:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-solhint@3.3.7:
+solhint-plugin-wonderland@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/solhint-plugin-wonderland/-/solhint-plugin-wonderland-0.0.1.tgz#36279d4bba7452e768f91c4cfe479873c2c74d95"
+  integrity sha512-TZp94NP2BLSigKI2zVX3qMJKRoroGJVCv7t1kc6PI4egPEyiZu931B5upXQd2m2YDIAftDQtjakaVcaRsoiH0g==
+  dependencies:
+    solhint "^3.3.7"
+
+solhint@3.3.7, solhint@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/solhint/-/solhint-3.3.7.tgz#b5da4fedf7a0fee954cb613b6c55a5a2b0063aa7"
   integrity sha512-NjjjVmXI3ehKkb3aNtRJWw55SUVJ8HMKKodwe0HnejA+k0d2kmhw7jvpa+MCTbcEgt8IWSwx0Hu6aCo/iYOZzQ==

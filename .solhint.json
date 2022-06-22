@@ -1,8 +1,9 @@
 {
   "extends": "solhint:recommended",
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "wonderland"],
   "rules": {
     "prettier/prettier": "warn",
+    "wonderland/non-state-vars-leading-underscore": "warn",
     "compiler-version": ["off"],
     "constructor-syntax": "warn",
     "quotes": ["error", "single"],
