@@ -51,7 +51,7 @@
     "fork:script": "cross-env FORK=true hardhat run",
     "postinstall": "husky install && yarn compile:test",
     "lint:check": "cross-env solhint 'solidity/**/*.sol' && cross-env prettier --check './**'",
-    "lint:fix": "sort-package-json && cross-env prettier --write './**' && cross-env solhint --fix 'solidity/**/*.sol' 'interfaces/**/*.sol'",
+    "lint:fix": "sort-package-json && cross-env prettier --write './**' && cross-env solhint --fix 'solidity/**/*.sol'",
     "prepare": "husky install",
     "prepublishOnly": "hardhat clean && hardhat compile && pinst --disable",
     "postpublish": "pinst --enable",
