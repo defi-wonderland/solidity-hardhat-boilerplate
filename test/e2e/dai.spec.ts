@@ -1,4 +1,5 @@
 import { getMainnetSdk } from '@dethcrypto/eth-sdk-client';
+import helpers, { SnapshotRestorer } from '@nomicfoundation/hardhat-network-helpers';
 import { Dai } from '@eth-sdk-types';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { JsonRpcSigner } from '@ethersproject/providers';
@@ -17,7 +18,7 @@ describe('DAI @skip-on-coverage', () => {
   let stranger: SignerWithAddress;
   let daiWhale: JsonRpcSigner;
   let dai: Dai;
-  let snapshotId: string;
+  let snapshot: SnapshotRestorer;
 
   before(async () => {
     [stranger] = await ethers.getSigners();
@@ -30,11 +31,11 @@ describe('DAI @skip-on-coverage', () => {
     dai = sdk.dai;
 
     daiWhale = await wallet.impersonate(daiWhaleAddress);
-    snapshotId = await evm.snapshot.take();
+    snapshot = await helpers.takeSnapshot();
   });
 
   beforeEach(async () => {
-    await evm.snapshot.revert(snapshotId);
+    await snapshot.restore();
   });
 
   describe('transfer', () => {
