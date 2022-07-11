@@ -12,7 +12,7 @@
   },
   "extensions": {
     "recommendations": [
-      "juanblanco.solidity",
+      "NomicFoundation.hardhat-solidity",
       "esbenp.prettier-vscode",
       "dbaeumer.vscode-eslint",
       "mikestead.dotenv"
