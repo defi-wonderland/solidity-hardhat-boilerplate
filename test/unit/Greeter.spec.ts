@@ -34,6 +34,6 @@ describe('Greeter', () => {
   });
 
   it('should revert if greeting is empty', async () => {
-    await expect(greeter.setGreeting('')).to.be.revertedWith('EmptyGreeting');
+    await expect(greeter.setGreeting('')).to.be.revertedWithCustomError(greeter, 'EmptyGreeting');
   });
 });

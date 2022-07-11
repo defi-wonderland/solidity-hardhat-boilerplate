@@ -18,6 +18,7 @@ artifacts
 cache
 typechained
 deployments
+eth-sdk/abis
 
 # JS
 node_modules
