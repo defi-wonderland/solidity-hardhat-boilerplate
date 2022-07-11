@@ -1,7 +1,6 @@
 import { getMainnetSdk } from '@dethcrypto/eth-sdk-client';
 import { Dai } from '@eth-sdk-types';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
-import { JsonRpcSigner } from '@ethersproject/providers';
 import { BigNumber, utils } from 'ethers';
 import { ethers } from 'hardhat';
 import { evm, wallet } from '@utils';
@@ -15,7 +14,7 @@ const daiWhaleAddress = '0x16463c0fdb6ba9618909f5b120ea1581618c1b9e';
 
 describe('DAI @skip-on-coverage', () => {
   let stranger: SignerWithAddress;
-  let daiWhale: JsonRpcSigner;
+  let daiWhale: SignerWithAddress;
   let dai: Dai;
   let snapshotId: string;
 
@@ -29,7 +28,7 @@ describe('DAI @skip-on-coverage', () => {
     const sdk = getMainnetSdk(stranger);
     dai = sdk.dai;
 
-    daiWhale = await wallet.impersonate(daiWhaleAddress);
+    daiWhale = await ethers.getImpersonatedSigner(daiWhaleAddress);
     snapshotId = await evm.snapshot.take();
   });
 
@@ -60,13 +59,13 @@ describe('DAI @skip-on-coverage', () => {
 
       given(async () => {
         // We use our dai whale's impersonated signer
-        initialSenderBalance = await dai.balanceOf(daiWhale._address);
+        initialSenderBalance = await dai.balanceOf(daiWhale.address);
         initialReceiverBalance = await dai.balanceOf(stranger.address);
         await dai.connect(daiWhale).transfer(stranger.address, amountToTransfer);
       });
 
       then('funds are taken from sender', async () => {
-        expect(await dai.balanceOf(daiWhale._address)).to.be.equal(initialSenderBalance.sub(amountToTransfer));
+        expect(await dai.balanceOf(daiWhale.address)).to.be.equal(initialSenderBalance.sub(amountToTransfer));
       });
 
       then('funds are given to receiver', async () => {
