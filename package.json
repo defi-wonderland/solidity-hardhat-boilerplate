@@ -77,17 +77,21 @@
     "eth-gas-reporter/colors": "1.4.0"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "4.6.0"
+    "@openzeppelin/contracts": "4.7.0"
   },
   "devDependencies": {
     "@codechecks/client": "0.1.12",
-    "@commitlint/cli": "17.0.2",
-    "@commitlint/config-conventional": "17.0.2",
-    "@defi-wonderland/smock": "2.0.7",
+    "@commitlint/cli": "17.0.3",
+    "@commitlint/config-conventional": "17.0.3",
+    "@defi-wonderland/smock": "2.1.1",
     "@dethcrypto/eth-sdk": "0.3.3",
     "@dethcrypto/eth-sdk-client": "0.1.6",
-    "@nomicfoundation/hardhat-chai-matchers": "1.0.0",
-    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.13",
+    "@ethersproject/abi": "5.6.4",
+    "@ethersproject/providers": "5.6.8",
+    "@nomicfoundation/hardhat-chai-matchers": "1.0.1",
+    "@nomicfoundation/hardhat-network-helpers": "1.0.2",
+    "@nomicfoundation/hardhat-toolbox": "1.0.2",
+    "@nomiclabs/hardhat-ethers": "2.1.0",
     "@nomiclabs/hardhat-etherscan": "3.1.0",
     "@typechain/ethers-v5": "10.1.0",
     "@typechain/hardhat": "6.1.2",
@@ -95,18 +99,18 @@
     "@types/chai-as-promised": "7.1.5",
     "@types/lodash": "4.14.182",
     "@types/mocha": "9.1.1",
-    "@types/node": "18.0.0",
+    "@types/node": "18.0.3",
     "chai": "4.3.6",
     "chai-as-promised": "7.1.1",
     "cross-env": "7.0.3",
     "dotenv": "16.0.1",
     "ethers": "5.6.9",
-    "hardhat": "2.9.9",
-    "hardhat-deploy": "0.11.10",
+    "hardhat": "2.10.0",
+    "hardhat-deploy": "0.11.11",
     "hardhat-gas-reporter": "1.0.8",
     "hardhat-preprocessor": "0.1.4",
     "husky": "8.0.1",
-    "lint-staged": "13.0.2",
+    "lint-staged": "13.0.3",
     "lodash": "4.17.21",
     "mocha": "10.0.0",
     "pinst": "3.0.0",
@@ -120,12 +124,12 @@
     "solidity-docgen": "0.5.17",
     "sort-package-json": "1.57.0",
     "standard-version": "9.5.0",
-    "ts-node": "10.8.1",
+    "ts-node": "10.8.2",
     "tsconfig-paths": "4.0.0",
     "typechain": "8.1.0",
     "typescript": "4.7.4"
   },
   "engines": {
-    "node": "^16.0.0"
+    "node": "^18.0.0"
   }
 }
