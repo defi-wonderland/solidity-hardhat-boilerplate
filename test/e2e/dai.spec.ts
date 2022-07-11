@@ -9,6 +9,7 @@ import { expect } from 'chai';
 import { getNodeUrl } from 'utils/env';
 import forkBlockNumber from './fork-block-numbers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
+import helpers, { SnapshotRestorer } from '@nomicfoundation/hardhat-network-helpers';
 
 const daiWhaleAddress = '0x16463c0fdb6ba9618909f5b120ea1581618c1b9e';
 
@@ -16,7 +17,7 @@ describe('DAI @skip-on-coverage', () => {
   let stranger: SignerWithAddress;
   let daiWhale: SignerWithAddress;
   let dai: Dai;
-  let snapshotId: string;
+  let snapshot: SnapshotRestorer;
 
   before(async () => {
     [stranger] = await ethers.getSigners();
@@ -29,11 +30,11 @@ describe('DAI @skip-on-coverage', () => {
     dai = sdk.dai;
 
     daiWhale = await ethers.getImpersonatedSigner(daiWhaleAddress);
-    snapshotId = await evm.snapshot.take();
+    snapshot = await helpers.takeSnapshot();
   });
 
   beforeEach(async () => {
-    await evm.snapshot.revert(snapshotId);
+    await snapshot.restore();
   });
 
   describe('transfer', () => {
