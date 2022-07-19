@@ -1,23 +1,23 @@
 import chai, { expect } from 'chai';
+import { takeSnapshot, SnapshotRestorer } from '@nomicfoundation/hardhat-network-helpers';
 import { MockContract, MockContractFactory, smock } from '@defi-wonderland/smock';
 import { Greeter, Greeter__factory } from '@typechained';
-import { evm } from '@utils';
 
 chai.use(smock.matchers);
 
 describe('Greeter', () => {
   let greeter: MockContract<Greeter>;
   let greeterFactory: MockContractFactory<Greeter__factory>;
-  let snapshotId: string;
+  let snapshot: SnapshotRestorer;
 
   before(async () => {
     greeterFactory = await smock.mock<Greeter__factory>('Greeter');
     greeter = await greeterFactory.deploy('Hello, world!');
-    snapshotId = await evm.snapshot.take();
+    snapshot = await takeSnapshot();
   });
 
   beforeEach(async () => {
-    await evm.snapshot.revert(snapshotId);
+    await snapshot.restore();
   });
 
   it('should return current greeting', async () => {
