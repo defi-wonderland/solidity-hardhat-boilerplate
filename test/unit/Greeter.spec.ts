@@ -1,8 +1,7 @@
 import chai, { expect } from 'chai';
-import helpers, { SnapshotRestorer } from '@nomicfoundation/hardhat-network-helpers';
+import { takeSnapshot, SnapshotRestorer } from '@nomicfoundation/hardhat-network-helpers';
 import { MockContract, MockContractFactory, smock } from '@defi-wonderland/smock';
 import { Greeter, Greeter__factory } from '@typechained';
-import { evm } from '@utils';
 
 chai.use(smock.matchers);
 
@@ -14,7 +13,7 @@ describe('Greeter', () => {
   before(async () => {
     greeterFactory = await smock.mock<Greeter__factory>('Greeter');
     greeter = await greeterFactory.deploy('Hello, world!');
-    snapshot = await helpers.takeSnapshot();
+    snapshot = await takeSnapshot();
   });
 
   beforeEach(async () => {
