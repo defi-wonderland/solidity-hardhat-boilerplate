@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import '@nomicfoundation/hardhat-toolbox';
-import '@typechain/hardhat/dist/type-extensions';
 import { removeConsoleLog } from 'hardhat-preprocessor';
 import 'hardhat-deploy';
 import { HardhatUserConfig, MultiSolcUserConfig, NetworksUserConfig } from 'hardhat/types';
@@ -52,9 +51,8 @@ const config: HardhatUserConfig = {
     ],
   },
   gasReporter: {
-    currency: process.env.COINMARKETCAP_DEFAULT_CURRENCY || 'USD',
+    currency: process.env.COINMARKETCAP_DEFAULT_CURRENCY,
     coinmarketcap: process.env.COINMARKETCAP_API_KEY,
-    enabled: process.env.REPORT_GAS ? true : false,
     showMethodSig: true,
     onlyCalledMethods: false,
   },
