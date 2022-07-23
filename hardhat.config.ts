@@ -71,7 +71,7 @@ const config: HardhatUserConfig = {
   },
 };
 
-if (process.env.TEST) {
+if (env.isTesting()) {
   (config.solidity as MultiSolcUserConfig).compilers = (config.solidity as MultiSolcUserConfig).compilers.map((compiler) => {
     return {
       ...compiler,
