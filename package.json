@@ -63,7 +63,7 @@
     "test:unit": "yarn test 'test/unit/**/*.spec.ts'"
   },
   "lint-staged": {
-    "*.{js,css,md,ts,sol}": "prettier --write",
+    "*.{js,css,md,ts,sol,yml}": "prettier --write",
     "*.sol": "cross-env solhint --fix 'solidity/**/*.sol'",
     "package.json": "sort-package-json"
   },

@@ -11,7 +11,7 @@
       }
     },
     {
-      "files": ["**.ts", "**.js"],
+      "files": ["**.ts", "**.js", "**.yml"],
       "options": {
         "printWidth": 145,
         "tabWidth": 2,
