@@ -6,9 +6,9 @@ interface IGreeter {
 
   error EmptyGreeting();
 
-  function greeting() external returns (string memory);
+  function greeting() external returns (string memory _greet);
 
-  function greet() external view returns (string memory);
+  function greet() external view returns (string memory _greet);
 
-  function setGreeting(string memory _greeting) external returns (bool);
+  function setGreeting(string memory _greeting) external returns (bool _changedGreet);
 }

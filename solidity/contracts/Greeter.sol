@@ -1,8 +1,8 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity 0.8.16;
 
-import 'hardhat/console.sol';
-import '../interfaces/IGreeter.sol';
+import {console} from 'hardhat/console.sol';
+import {IGreeter} from '../interfaces/IGreeter.sol';
 
 /// @title A contract for boilerplating
 /// @author Hardhat (and DeFi Wonderland)
@@ -18,7 +18,7 @@ contract Greeter is IGreeter {
     greeting = _greeting;
   }
 
-  function greet() external view override returns (string memory) {
+  function greet() external view override returns (string memory _greet) {
     return greeting;
   }
 
