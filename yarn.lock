@@ -6528,6 +6528,13 @@ solc@^0.6.7:
     semver "^5.5.0"
     tmp "0.0.33"
 
+solhint-plugin-defi-wonderland@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/solhint-plugin-defi-wonderland/-/solhint-plugin-defi-wonderland-1.1.0.tgz#6b82ee4da9fea1a4aeed4409915c3980f0f6b6a2"
+  integrity sha512-dl5wyURqrs9KgkDjYDW5RN55Fij7rrtybluqG45csilqD9x2vd+iAkaMD2VU150TqmfrcYN5p1Rer3sKWRNIPQ==
+  dependencies:
+    solhint "3.3.7"
+
 solhint-plugin-prettier@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/solhint-plugin-prettier/-/solhint-plugin-prettier-0.0.5.tgz#e3b22800ba435cd640a9eca805a7f8bc3e3e6a6b"
@@ -6535,14 +6542,7 @@ solhint-plugin-prettier@0.0.5:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-solhint-plugin-wonderland@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/solhint-plugin-wonderland/-/solhint-plugin-wonderland-0.0.1.tgz#36279d4bba7452e768f91c4cfe479873c2c74d95"
-  integrity sha512-TZp94NP2BLSigKI2zVX3qMJKRoroGJVCv7t1kc6PI4egPEyiZu931B5upXQd2m2YDIAftDQtjakaVcaRsoiH0g==
-  dependencies:
-    solhint "^3.3.7"
-
-solhint@3.3.7, solhint@^3.3.7:
+solhint@3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/solhint/-/solhint-3.3.7.tgz#b5da4fedf7a0fee954cb613b6c55a5a2b0063aa7"
   integrity sha512-NjjjVmXI3ehKkb3aNtRJWw55SUVJ8HMKKodwe0HnejA+k0d2kmhw7jvpa+MCTbcEgt8IWSwx0Hu6aCo/iYOZzQ==
