@@ -1,5 +1,9 @@
 # Hardhat Boilerplate
 
+# Deprecation notice
+On defi-wonderland we have been using foundry for all new projects for quite some time now, therefore maintaining a template to bootstrap new hardhat projects does not make sense for us anymore. 
+If you are interested in maintaining this yourself, feel free to fork it and open an issue so we can use this document to direct users to your fork.
+
 ## Why ?
 
 Thought to have a fast way of bootstraping projects with best practice's in mind. Having linters, prettiers, standards on how to commit, and changelog creation & maintenance.
