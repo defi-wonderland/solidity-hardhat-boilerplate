@@ -1,7 +1,7 @@
 # Hardhat Boilerplate
 
 # Deprecation notice
-On defi-wonderland we have been using foundry for all new projects for quite some time now, therefore maintaining a template to bootstrap new hardhat projects does not make sense for us anymore. 
+At [Wonderland](https://defi.sucks) we have been using foundry for all new projects for quite some time now, therefore maintaining a template to bootstrap new hardhat projects does not make sense for us anymore. 
 If you are interested in maintaining this yourself, feel free to fork it and open an issue so we can use this document to direct users to your fork.
 
 ## Why ?
